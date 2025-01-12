@@ -3,7 +3,7 @@
 <html>
 
     <head>
-<!--        <link href="styles.css" rel="stylesheet" type="text/css">-->
+       <link href="styles.css" rel="stylesheet" type="text/css">
         <title>CSCI3369 Prisoner's Dilemma Assignment Simulation</title>
     </head>
 
@@ -44,25 +44,16 @@ case 'POST':
 #    echo "POSTed...<br>";
 #    system("echo $PATH");
     echo "<br>";
-# Save input to file
-    $tmpfname = tempnam("/var/tmp", "cs186-pd-");
-
-    $handle = fopen($tmpfname, "w");
-    fwrite($handle, $agent1);
-    fwrite($handle, "\n\n");
-    fwrite($handle, $agent2);
-    fwrite($handle, "\n");
-    fclose($handle);
     # Convert to an int to prevent any shenanigans
     $numrounds = intval($_POST["numrounds"]);
 
-#    echo "tmpfname = ", $tmpfname;
-   // echo "<br><br>Results: <br>";
-    $out = shell_exec("/usr/bin/python3 ./pd.py " . $numrounds . " html < " . $tmpfname);
-    // echo $tmpfname;
+    # Create input array
+    $input = array($agent1, "", $agent2);
+    $input_string = implode("\n", $input);
+
+    # Pass input string directly to shell_exec
+    $out = shell_exec("echo \"$input_string\" | /usr/bin/python3 ./pd.py " . $numrounds . " html");
     echo $out;
-   // echo "<br>---<br>End of results";
-    unlink($tmpfname);
 
 #    system("/usr/bin/python /nfs/home/groups/mather/web/vs/pd.py");
 
