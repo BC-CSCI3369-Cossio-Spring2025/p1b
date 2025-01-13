@@ -52,7 +52,7 @@ case 'POST':
     $input_string = implode("\n", $input);
 
     # Pass input string directly to shell_exec
-    $out = shell_exec("echo \"$input_string\" | /usr/bin/python3 ./pd.py " . $numrounds . " html");
+    $out = shell_exec("echo \"$input_string\" | /usr/bin/python3 /app/pd.py " . $numrounds . " html");
     echo $out;
 
 #    system("/usr/bin/python /nfs/home/groups/mather/web/vs/pd.py");
