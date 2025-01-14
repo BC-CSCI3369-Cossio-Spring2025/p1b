@@ -22,9 +22,6 @@ if($method == "POST") {
 
 <center>
 <h2>CSCI3369 Prisoner's Dilemma Assignment Simulation</h2>
-<p>
-To go back to the assignment description click <a href = "https://docs.google.com/document/d/1ALPaQJNPDAwkR0mkObVLiuRfQVa5sX_nmYPqz9AYWQA/edit?usp=sharing">here</a>.
-</p>
 <div>
      <br>
      <form action="index.php" method="post">
